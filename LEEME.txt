@@ -1,0 +1,64 @@
+CONSTOP GPS (por CONSTRUTOP M&T S.A.S) — cómo instalarla y sacar el APK
+=================================================
+
+Qué trae esta carpeta
+- index.html ............ la app completa (GPS, mapa, puntos, conversor)
+- manifest.webmanifest .. nombre, colores e íconos de la app
+- sw.js ................. hace que funcione sin internet
+- icon-*.png ............ íconos
+
+La app es gratis, sin cuentas y sin vencimiento. Los puntos se guardan en el teléfono.
+
+
+PASO 1 — Ponerla en internet gratis (GitHub Pages)
+--------------------------------------------------
+El GPS del navegador solo funciona si la app se abre desde una dirección https.
+
+1. Crea una cuenta gratis en https://github.com
+2. Botón "New repository". Nombre: constop-gps. Márcalo "Public". Create.
+3. "uploading an existing file" → arrastra TODOS los archivos de esta carpeta
+   (no la carpeta, sino lo que hay adentro) → "Commit changes".
+4. Settings → Pages → Source: "Deploy from a branch" → Branch: main / (root) → Save.
+5. En 1 o 2 minutos queda en:  https://TU-USUARIO.github.io/constop-gps/
+
+Nota: el enlace es público pero nadie lo conoce si no lo compartes.
+
+
+PASO 2 — Instalarla en el celular (sin APK)
+-------------------------------------------
+Abre ese enlace en Chrome del celular → menú ⋮ → "Instalar app" o
+"Agregar a pantalla principal". Queda con ícono propio, pantalla completa,
+usa el GPS y abre sin señal.
+
+
+PASO 3 — Sacar el APK (opcional)
+--------------------------------
+1. Entra a https://www.pwabuilder.com desde el PC.
+2. Pega tu enlace de GitHub Pages → Start.
+3. "Package for stores" → Android → "Generate Package".
+   - Package ID: com.construtop.constopgps
+   - App name: Constop GPS
+4. Descarga el .zip. Adentro viene el .apk (para instalar directo) y el
+   .aab (para Play Store si algún día la publicas).
+5. Pasa el .apk al celular (WhatsApp, Drive o cable) → ábrelo → permite
+   "instalar apps de origen desconocido".
+6. GUARDA el archivo signing.keystore y la clave que te da PWABuilder.
+   Sin eso no puedes sacar actualizaciones con el mismo APK.
+
+Importante: el APK abre tu enlace de GitHub Pages. Si cambias la app,
+sube los archivos nuevos al repositorio y el APK ya la muestra actualizada
+(no hay que reinstalar). Cambia la línea VERSION en sw.js (constop-v2, v3…)
+cada vez que actualices.
+
+
+Precisión — léelo antes de usarla en un trabajo
+-----------------------------------------------
+- Celular normal: ±3 a 5 m en cielo abierto, peor bajo árboles o junto a casas.
+- La captura promedia varias lecturas y muestra la dispersión. Más lecturas
+  ayudan, pero no convierten el celular en un GNSS de precisión.
+- Sirve para reconocimiento, ubicar mojones, cartera preliminar y replanteo
+  aproximado. NO para linderos, división predial ni nada que vaya a escritura.
+- Z: el GPS entrega altura elipsoidal. Escribe la ondulación geoidal N del sitio
+  (GEOCOL del IGAC) en Puntos → Ajustes para obtener cota aproximada.
+- Las conversiones CTM12 / Gauss-Krüger / UTM son exactas (series de Krüger,
+  error menor a 1 mm). La imprecisión está en el GPS, no en el cálculo.
