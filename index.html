@@ -730,6 +730,7 @@ h2{font-stretch:80%;font-size:22px;margin:0;text-wrap:balance;font-weight:750}
 .coord .v{font-family:var(--font-num);font-variant-numeric:tabular-nums;font-size:clamp(24px,8.4vw,34px);font-weight:500;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
 .coord .v.z{font-size:clamp(20px,6.6vw,26px)}
 .sub{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:12.5px;color:var(--muted)}
+.caltag{color:var(--accent-strong);font-family:var(--font-ui);font-weight:700}
 .acc{display:flex;flex-direction:column;gap:6px}
 .accrow{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
 .accrow strong{font-family:var(--font-num);font-size:18px}
@@ -772,6 +773,18 @@ select.inline{width:auto;min-height:36px;padding:4px 8px;font-size:14px;font-wei
 .listhead{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
 .btn.sm{min-height:36px;padding:6px 12px;font-size:13.5px}
 .jobbar{display:flex;gap:8px;align-items:flex-end}
+.calcard{display:flex;flex-direction:column;gap:10px}
+.calhead{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.calst{margin:4px 0 0;font-size:13px;color:var(--muted)}
+.pill{flex:none;font-size:11.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:4px 9px;border-radius:99px;background:var(--sunk);color:var(--muted)}
+.pill.on{background:var(--accent);color:var(--on-accent)}
+.calres{display:flex;flex-direction:column;gap:4px;font-family:var(--font-num);font-size:12.5px}
+.calres:empty{display:none}
+.calres .rw{display:flex;justify-content:space-between;gap:8px;padding:6px 8px;background:var(--sunk);border-radius:6px}
+.calres .rw span:last-child{color:var(--muted)}
+.chkrow{display:flex;gap:16px;flex-wrap:wrap}
+.chkrow label{display:flex;gap:7px;align-items:center;font-weight:600}
+.chkrow input{width:20px;height:20px;accent-color:var(--accent)}
 .jobbar .btn{min-height:44px;flex:none}
 .jobline{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:13px;color:var(--muted)}
 .jobline b{color:var(--ink);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -804,8 +817,16 @@ details.card[open] summary{margin-bottom:12px}
 .maptools{position:absolute;left:max(12px,env(safe-area-inset-left,0px));right:max(12px,env(safe-area-inset-right,0px));bottom:12px;z-index:500;display:flex;gap:8px;flex-wrap:wrap;pointer-events:none}
 .maptools .btn{pointer-events:auto;box-shadow:0 2px 10px rgba(0,0,0,.18);min-height:44px}
 .maptools .btn[aria-pressed="true"]{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
-.mapnote{position:absolute;top:10px;left:50%;transform:translateX(-50%);z-index:500;background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:6px 12px;font-size:12.5px;font-weight:600;box-shadow:0 2px 10px rgba(0,0,0,.15);max-width:calc(100% - 100px);text-align:center}
-.lbl{background:transparent;border:0;box-shadow:none;color:#fff;font:600 11px var(--font-num);text-shadow:0 0 3px #000,0 0 2px #000}
+.mapnote{position:absolute;bottom:128px;left:50%;transform:translateX(-50%);z-index:500;background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:6px 12px;font-size:12.5px;font-weight:600;box-shadow:0 2px 10px rgba(0,0,0,.15);max-width:calc(100% - 100px);text-align:center}
+.lbl{background:transparent;border:0;box-shadow:none;color:#fff;font:700 14px var(--font-num);text-shadow:0 0 3px #000,0 0 2px #000,0 0 1px #000}
+.seg{background:none;border:0}
+.seg span{display:inline-block;transform:translate(-50%,-50%);white-space:nowrap;background:rgba(10,10,10,.78);color:#FFD23F;font:700 13.5px var(--font-num);padding:3px 7px;border-radius:6px;border:1px solid rgba(255,210,63,.55)}
+.seg.live span{color:#8EC5FF;border-color:rgba(142,197,255,.6)}
+.mapstats{position:absolute;top:10px;left:calc(54px + env(safe-area-inset-left,0px));right:calc(62px + env(safe-area-inset-right,0px));z-index:500;background:rgba(10,10,10,.82);color:#fff;border-radius:10px;padding:8px 11px;display:flex;flex-direction:column;gap:3px;box-shadow:0 2px 10px rgba(0,0,0,.25);pointer-events:none}
+.mapstats .big{display:flex;flex-wrap:wrap;gap:2px 14px;align-items:baseline}
+.mapstats b{font:700 17px var(--font-num);color:#FFD23F}
+.mapstats small{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#B9C2C1;font-weight:700}
+.mapstats .live{font-size:12.5px;color:#8EC5FF;font-family:var(--font-num)}
 .lbl::before{display:none}
 
 .credits{display:flex;flex-direction:column;gap:12px}
@@ -818,6 +839,27 @@ details.card[open] summary{margin-bottom:12px}
 .credmark{flex:none;width:64px;height:64px;border-radius:14px;background:var(--accent);display:grid;place-items:center}
 .credmark svg{width:40px;height:40px;stroke:#FFFFFF;fill:none;stroke-width:2.6;stroke-linecap:round}
 .credmark img{width:100%;height:100%;object-fit:contain;border-radius:14px}
+.chips{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;background:var(--sunk);padding:4px;border-radius:10px}
+.chips button{border:0;background:none;min-height:40px;border-radius:7px;font-weight:700;font-size:14px;color:var(--muted);cursor:pointer;font-stretch:88%}
+.chips button[aria-checked="true"]{background:var(--accent);color:var(--on-accent)}
+.chips button:disabled{opacity:.5}
+.chrono{display:flex;flex-direction:column;gap:10px;border:1px solid var(--line);border-radius:10px;padding:12px;background:var(--sunk)}
+.clockrow{display:flex;align-items:center;gap:14px}
+.clock{font-size:clamp(46px,15vw,64px);font-weight:600;line-height:1;letter-spacing:-.02em;color:var(--red)}
+.chrono.ok .clock{color:var(--accent-strong)}
+.chsub{display:flex;flex-direction:column;gap:2px;font-size:13px;color:var(--muted);min-width:0}
+.chsub b{color:var(--ink);font-size:15px}
+.cmp{display:grid;grid-template-columns:auto 1fr 1fr;gap:4px 10px;font-size:14px;align-items:baseline}
+.cmp .h{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-family:var(--font-ui);font-weight:700}
+.cmp .k{font-family:var(--font-ui);font-weight:700;font-size:12.5px;display:flex;align-items:center;gap:6px}
+.cmp .k::before{content:"";width:9px;height:9px;border-radius:50%}
+.cmp .live::before{background:#2F80ED}
+.cmp .avg::before{background:#F2994A}
+.cmpfoot{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:12.5px;color:var(--muted)}
+.cmpfoot b{color:var(--ink)}
+.lastcap{border-left:3px solid var(--accent);background:var(--sunk);border-radius:0 8px 8px 0;padding:9px 11px;font-size:13px;display:flex;flex-direction:column;gap:3px}
+.lastcap b{font-size:14px}
+.lastcap .num{font-size:13.5px}
 /* pestañas */
 .tabs{flex:none;display:grid;grid-template-columns:repeat(4,1fr);background:var(--surface);border-top:1px solid var(--line);padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px)}
 .tab{background:none;border:0;padding:9px 4px 10px;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:12px;font-weight:650;color:var(--muted);cursor:pointer;font-stretch:85%}
@@ -854,7 +896,7 @@ details.card[open] summary{margin-bottom:12px}
           <span class="k">E</span><span class="v" id="vE">—</span>
           <span class="k">Z</span><span class="v z" id="vZ">—</span>
         </div>
-        <div class="sub num"><span id="vLat">Lat —</span><span id="vLon">Lon —</span></div>
+        <div class="sub num"><span id="vLat">Lat —</span><span id="vLon">Lon —</span><span id="calTag" class="caltag" hidden>Calibrado con BM</span></div>
       </div>
 
       <div class="card acc">
@@ -871,8 +913,23 @@ details.card[open] summary{margin-bottom:12px}
           <label class="field"><span class="label">Punto</span><input id="capP" inputmode="text" autocomplete="off"></label>
           <label class="field"><span class="label">Descripción</span><input id="capD" placeholder="BM, LIND, VIA…" autocomplete="off" list="codes"></label>
         </div>
+        <div class="field"><span class="label">Tiempo de ocupación</span>
+          <div class="chips" id="capChips" role="radiogroup" aria-label="Tiempo de ocupación">
+            <button type="button" data-v="n">Rápida</button><button type="button" data-v="60">1 min</button><button type="button" data-v="180">3 min</button><button type="button" data-v="300">5 min</button><button type="button" data-v="600">10 min</button>
+          </div>
+        </div>
+        <div class="chrono" id="chrono" hidden>
+          <div class="clockrow"><div class="clock num" id="chClock">03:00</div><div class="chsub"><b id="chState">Estabilizando</b><span id="chSub">0 lecturas</span></div></div>
+          <div class="cmp num">
+            <span></span><span class="h">Norte</span><span class="h">Este</span>
+            <span class="k live">En vivo</span><span id="cvLN">—</span><span id="cvLE">—</span>
+            <span class="k avg">Promedio</span><span id="cvAN">—</span><span id="cvAE">—</span>
+          </div>
+          <div class="cmpfoot num"><span>Separación <b id="cvSep">—</b></span><span>Dispersión <b id="cvSd">—</b></span><span>Z prom. <b id="cvZ">—</b></span></div>
+        </div>
         <button class="btn primary big progress" id="capBtn" disabled><span class="fill" id="capFill"></span><span id="capTxt">Capturar punto</span></button>
-        <p class="hint" id="capHint">Promedia varias lecturas y descarta las de baja precisión. Ajusta cuántas en Puntos → Ajustes.</p>
+        <p class="hint" id="capHint">Escoge el tiempo, toca Capturar y quédate quieto. Al terminar el reloj, el punto se guarda solo.</p>
+        <div class="lastcap" id="lastCap" hidden></div>
       </div>
       <datalist id="codes"><option value="BM"><option value="DELTA"><option value="LIND"><option value="ESQ"><option value="VIA"><option value="BORDE"><option value="CERCA"><option value="POSTE"><option value="ARBOL"><option value="CASA"><option value="QDA"><option value="TN"></datalist>
     </section>
@@ -880,6 +937,7 @@ details.card[open] summary{margin-bottom:12px}
     <!-- MAPA -->
     <section class="pane mapwrap" id="p-map" hidden style="padding:0;max-width:none;gap:0;height:100%">
       <div id="map"></div>
+      <div class="mapstats" id="mapStats" hidden></div>
       <div class="mapnote" id="mapNote" hidden></div>
       <div class="maptools">
         <button class="btn" id="mapAdd" aria-pressed="false">Marcar en mapa</button>
@@ -909,22 +967,34 @@ details.card[open] summary{margin-bottom:12px}
       <div class="btns">
         <button class="btn" id="addManual">Agregar punto a mano</button>
       </div>
+      <div class="card calcard" id="calCard">
+        <div class="calhead"><div><span class="label">Calibración con punto conocido</span><p class="calst" id="calSt"></p></div><span class="pill" id="calPill">Sin calibrar</span></div>
+        <div id="calRes" class="calres"></div>
+        <div class="btns"><button class="btn" id="calAdd">Calibrar con BM / mojón</button><button class="btn danger" id="calDel" hidden>Quitar calibración</button></div>
+      </div>
       <div class="listhead"><span class="hint"><span id="selInfo"></span> · <span id="ptsSys"></span></span><div class="btns" style="flex-wrap:nowrap"><button class="btn sm" id="selAll">Todos</button><button class="btn sm" id="selNone">Ninguno</button></div></div>
       <div class="plist" id="plist"></div>
 
       <details class="card" id="setBox">
         <summary>Ajustes</summary>
         <div class="settings">
+          <label class="field"><span class="label">País · sistemas de coordenadas</span><select id="setCountry"></select></label>
           <label class="field"><span class="label">Sistema de salida (exportar, área y lectura)</span><select id="setSys"></select></label>
+          <button class="btn" id="zoneBtn" type="button">Detectar zona con el GPS</button>
           <div class="row">
-            <label class="field"><span class="label">Lecturas a promediar</span><input id="setN" type="number" min="1" max="300" inputmode="numeric"></label>
+            <label class="field"><span class="label">Modo de captura</span><select id="setMode"><option value="n">Por número de lecturas</option><option value="t">Por tiempo (ocupación)</option></select></label>
+            <label class="field" id="fN"><span class="label">Lecturas a promediar</span><input id="setN" type="number" min="3" max="600" inputmode="numeric"></label>
+            <label class="field" id="fT" hidden><span class="label">Tiempo de ocupación</span><select id="setT"><option value="30">30 segundos</option><option value="60">1 minuto</option><option value="120">2 minutos</option><option value="180">3 minutos</option><option value="300">5 minutos</option><option value="600">10 minutos</option></select></label>
+          </div>
+          <div class="row">
             <label class="field"><span class="label">Precisión máx. aceptada (m)</span><input id="setAcc" type="number" min="1" max="100" step="0.5" inputmode="decimal"></label>
+            <label class="field"><span class="label">Filtro de lecturas malas</span><select id="setFilt"><option value="1">Activado</option><option value="0">Desactivado</option></select></label>
           </div>
           <div class="row">
             <label class="field"><span class="label">Ondulación geoidal N (m)</span><input id="setGeoid" type="number" step="0.01" inputmode="decimal"></label>
             <label class="field"><span class="label">Separador de los TXT</span><select id="setSep"><option value=" ">Espacio</option><option value="\t">Tabulador</option><option value=";">Punto y coma ( ; )</option><option value=",">Coma ( , )</option></select></label>
           </div>
-          <p class="hint">El GPS del celular entrega altura elipsoidal. La app calcula Z = altura − N. Si conoces la ondulación del sitio (GEOCOL), escríbela; si la dejas en 0, Z queda elipsoidal.</p>
+          <p class="hint">El GPS del celular entrega altura elipsoidal. La app calcula Z = altura − N. Si conoces la ondulación del sitio (en Colombia, GEOCOL del IGAC; en otros países, el modelo de su instituto geográfico), escríbela; si la dejas en 0, Z queda elipsoidal.</p>
           <div class="row">
             <label class="field"><span class="label">Decimales</span><select id="setDec"><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></label>
             <label class="field"><span class="label">Tema</span><select id="setTheme"><option value="">Según el teléfono</option><option value="light">Claro (sol)</option><option value="dark">Oscuro</option></select></label>
@@ -1062,11 +1132,91 @@ details.card[open] summary{margin-bottom:12px}
     gk_oo:   { name: 'Gauss-Krüger Oeste-Oeste', short: 'GK O-Oeste', epsg: 3114, tm: { ell: GRS80, lat0: GK_LAT0, lon0: -80.07750791666666, k0: 1, x0: 1000000, y0: 1000000 } },
     gk_ec:   { name: 'Gauss-Krüger Este Central', short: 'GK E-Central', epsg: 3117, tm: { ell: GRS80, lat0: GK_LAT0, lon0: -71.07750791666666, k0: 1, x0: 1000000, y0: 1000000 } },
     gk_ee:   { name: 'Gauss-Krüger Este-Este', short: 'GK Este-Este', epsg: 3118, tm: { ell: GRS80, lat0: GK_LAT0, lon0: -68.07750791666666, k0: 1, x0: 1000000, y0: 1000000 } },
-    utm17:   { name: 'UTM zona 17 Norte', short: 'UTM 17N', epsg: 32617, tm: { ell: WGS84, lat0: 0, lon0: -81, k0: 0.9996, x0: 500000, y0: 0 } },
-    utm18:   { name: 'UTM zona 18 Norte', short: 'UTM 18N', epsg: 32618, tm: { ell: WGS84, lat0: 0, lon0: -75, k0: 0.9996, x0: 500000, y0: 0 } },
-    utm19:   { name: 'UTM zona 19 Norte', short: 'UTM 19N', epsg: 32619, tm: { ell: WGS84, lat0: 0, lon0: -69, k0: 0.9996, x0: 500000, y0: 0 } }
+    utm17:   { name: 'UTM zona 17 Norte · WGS84', short: 'UTM 17N', epsg: 32617, utm: { z: 17, s: false }, tm: { ell: WGS84, lat0: 0, lon0: -81, k0: 0.9996, x0: 500000, y0: 0 } },
+    utm18:   { name: 'UTM zona 18 Norte · WGS84', short: 'UTM 18N', epsg: 32618, utm: { z: 18, s: false }, tm: { ell: WGS84, lat0: 0, lon0: -75, k0: 0.9996, x0: 500000, y0: 0 } },
+    utm19:   { name: 'UTM zona 19 Norte · WGS84', short: 'UTM 19N', epsg: 32619, utm: { z: 19, s: false }, tm: { ell: WGS84, lat0: 0, lon0: -69, k0: 0.9996, x0: 500000, y0: 0 } }
   };
-  Object.keys(SYSTEMS).forEach(function (k) { if (SYSTEMS[k].tm) SYSTEMS[k].proj = makeTM(SYSTEMS[k].tm); });
+  /* Cónica conforme de Lambert, 2 paralelos (Snyder 1987, §15). */
+  function makeLCC(p) {
+    var a = p.ell.a, f = p.ell.f, e2 = f * (2 - f), e = Math.sqrt(e2);
+    var m = function (ph) { var s = Math.sin(ph); return Math.cos(ph) / Math.sqrt(1 - e2 * s * s); };
+    var t = function (ph) { var s = Math.sin(ph); return Math.tan(Math.PI / 4 - ph / 2) / Math.pow((1 - e * s) / (1 + e * s), e / 2); };
+    var p1 = p.lat1 * D2R, p2 = p.lat2 * D2R, p0 = p.lat0 * D2R, l0 = p.lon0 * D2R;
+    var n = (Math.log(m(p1)) - Math.log(m(p2))) / (Math.log(t(p1)) - Math.log(t(p2)));
+    var F = m(p1) / (n * Math.pow(t(p1), n)), r0 = a * F * Math.pow(t(p0), n);
+    function forward(lat, lon) {
+      var r = a * F * Math.pow(t(lat * D2R), n), th = n * (lon * D2R - l0);
+      return [p.x0 + r * Math.sin(th), p.y0 + r0 - r * Math.cos(th)];
+    }
+    function inverse(E, N) {
+      var dx = E - p.x0, dy = r0 - (N - p.y0), r = (n < 0 ? -1 : 1) * Math.sqrt(dx * dx + dy * dy);
+      var th = n < 0 ? Math.atan2(-dx, -dy) : Math.atan2(dx, dy), tt = Math.pow(r / (a * F), 1 / n);
+      var ph = Math.PI / 2 - 2 * Math.atan(tt);
+      for (var i = 0; i < 15; i++) { var s = Math.sin(ph), nx = Math.PI / 2 - 2 * Math.atan(tt * Math.pow((1 - e * s) / (1 + e * s), e / 2)); if (Math.abs(nx - ph) < 1e-13) { ph = nx; break; } ph = nx; }
+      return [ph / D2R, (th / n + l0) / D2R];
+    }
+    return { forward: forward, inverse: inverse };
+  }
+
+  /* UTM mundial: 60 zonas Norte y Sur (WGS84). Claves utm{zona}{n|s}, p. ej. utm18s. */
+  function utmTM(z, south, ell) { return { ell: ell || WGS84, lat0: 0, lon0: -183 + 6 * z, k0: 0.9996, x0: 500000, y0: south ? 10000000 : 0 }; }
+  for (var z = 1; z <= 60; z++) {
+    SYSTEMS['utm' + z + 'n'] = { name: 'UTM zona ' + z + ' Norte · WGS84', short: 'UTM ' + z + 'N', epsg: 32600 + z, tm: utmTM(z, false), utm: { z: z, s: false } };
+    SYSTEMS['utm' + z + 's'] = { name: 'UTM zona ' + z + ' Sur · WGS84', short: 'UTM ' + z + 'S', epsg: 32700 + z, tm: utmTM(z, true), utm: { z: z, s: true } };
+  }
+  /* Sistemas oficiales por país (las diferencias de datum con WGS84 son de centímetros: muy por debajo del GPS del celular). */
+  function addUTM(key, z, south, ell, datum, epsg) {
+    SYSTEMS[key] = { name: 'UTM zona ' + z + (south ? ' Sur' : ' Norte') + ' · ' + datum, short: 'UTM ' + z + (south ? 'S' : 'N'), epsg: epsg, tm: utmTM(z, south, ell), utm: { z: z, s: south } };
+  }
+  // México: ITRF2008 (INEGI)
+  for (var zm = 11; zm <= 16; zm++) addUTM('mx_utm' + zm, zm, false, GRS80, 'ITRF2008 (INEGI)', 6355 + zm);
+  SYSTEMS.mx_lcc = { name: 'Cónica Conforme de Lambert · ITRF2008 (INEGI)', short: 'LCC México', epsg: 6372, lcc: { ell: GRS80, lat1: 17.5, lat2: 29.5, lat0: 12, lon0: -102, x0: 2500000, y0: 0 } };
+  // Ecuador: SIRGAS-Ecuador
+  addUTM('ec_utm17s', 17, true, GRS80, 'SIRGAS-Ecuador'); addUTM('ec_utm18s', 18, true, GRS80, 'SIRGAS-Ecuador');
+  addUTM('ec_utm17n', 17, false, GRS80, 'SIRGAS-Ecuador'); addUTM('ec_utm15s', 15, true, GRS80, 'SIRGAS-Ecuador (Galápagos)');
+  // Perú: WGS84 (IGN)
+  addUTM('pe_utm17s', 17, true, WGS84, 'WGS84 (IGN Perú)', 32717); addUTM('pe_utm18s', 18, true, WGS84, 'WGS84 (IGN Perú)', 32718); addUTM('pe_utm19s', 19, true, WGS84, 'WGS84 (IGN Perú)', 32719);
+  // Chile: SIRGAS-Chile
+  addUTM('cl_utm18s', 18, true, GRS80, 'SIRGAS-Chile'); addUTM('cl_utm19s', 19, true, GRS80, 'SIRGAS-Chile'); addUTM('cl_utm12s', 12, true, GRS80, 'SIRGAS-Chile (Isla de Pascua)');
+  // Venezuela: REGVEN (SIRGAS)
+  for (var zv = 18; zv <= 21; zv++) addUTM('ve_utm' + zv, zv, false, GRS80, 'REGVEN');
+  // Canadá: NAD83(CSRS) UTM 7–22 y MTM 1–17
+  for (var zc = 7; zc <= 22; zc++) addUTM('ca_utm' + zc, zc, false, GRS80, 'NAD83(CSRS)');
+  var MTM_CM = [0, 53, 56, 58.5, 61.5, 64.5, 67.5, 70.5, 73.5, 76.5, 79.5, 82.5, 81, 84, 87, 90, 93, 96];
+  for (var zt = 1; zt <= 17; zt++) SYSTEMS['ca_mtm' + zt] = { name: 'MTM zona ' + zt + ' (MC ' + String(MTM_CM[zt]).replace('.', ',') + '° O) · NAD83(CSRS)', short: 'MTM ' + zt, tm: { ell: GRS80, lat0: 0, lon0: -MTM_CM[zt], k0: 0.9999, x0: 304800, y0: 0 }, mtm: zt };
+
+  /* Proyecciones creadas al usarlas por primera vez (hay ~180 sistemas). */
+  Object.keys(SYSTEMS).forEach(function (k) {
+    var sy = SYSTEMS[k]; if (sy.geo) return;
+    var cache = null;
+    Object.defineProperty(sy, 'proj', { get: function () { return cache || (cache = sy.lcc ? makeLCC(sy.lcc) : makeTM(sy.tm)); } });
+  });
+
+  var COUNTRIES = {
+    co: { name: 'Colombia · MAGNA-SIRGAS', keys: ['wgs', 'ctm12', 'gk_bog', 'gk_oes', 'gk_oo', 'gk_ec', 'gk_ee', 'utm17', 'utm18', 'utm19'], def: 'ctm12', box: [-5, 14, -83, -66] },
+    mx: { name: 'México · ITRF2008 (INEGI)', keys: ['wgs', 'mx_lcc', 'mx_utm11', 'mx_utm12', 'mx_utm13', 'mx_utm14', 'mx_utm15', 'mx_utm16'], def: 'mx_utm14', auto: true, box: [14, 33.5, -119, -86] },
+    ec: { name: 'Ecuador · SIRGAS-Ecuador', keys: ['wgs', 'ec_utm17s', 'ec_utm18s', 'ec_utm17n', 'ec_utm15s'], def: 'ec_utm17s', auto: true, box: [-5.1, 1.7, -92.5, -75] },
+    pe: { name: 'Perú · WGS84', keys: ['wgs', 'pe_utm17s', 'pe_utm18s', 'pe_utm19s'], def: 'pe_utm18s', auto: true, box: [-18.6, 0.1, -81.5, -68.5] },
+    cl: { name: 'Chile · SIRGAS-Chile', keys: ['wgs', 'cl_utm18s', 'cl_utm19s', 'cl_utm12s'], def: 'cl_utm19s', auto: true, box: [-56.6, -17.4, -110, -66] },
+    ve: { name: 'Venezuela · REGVEN', keys: ['wgs', 've_utm18', 've_utm19', 've_utm20', 've_utm21'], def: 've_utm19', auto: true, box: [0.5, 12.6, -73.5, -59.5] },
+    ca: { name: 'Canadá · NAD83(CSRS)', keys: ['wgs'].concat([7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22].map(function (z) { return 'ca_utm' + z; }), [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17].map(function (z) { return 'ca_mtm' + z; })), def: 'ca_utm17', auto: true, box: [41, 84, -141.5, -52] },
+    ww: { name: 'Otro país · UTM mundial (WGS84)', keys: ['wgs'].concat((function () { var r = []; for (var z = 1; z <= 60; z++) { r.push('utm' + z + 'n'); r.push('utm' + z + 's'); } return r; })()), def: 'utm18n', auto: true, box: null }
+  };
+  function utmZone(lat, lon) { var L = ((lon + 180) % 360 + 360) % 360; return Math.min(60, Math.floor(L / 6) + 1); }
+  /* Sistema UTM (o MTM) que corresponde a una posición dentro de la lista de un país. */
+  function zoneKeyFor(country, lat, lon, family) {
+    var c = COUNTRIES[country] || COUNTRIES.ww, z = utmZone(lat, lon), south = lat < 0, best = null, bd = 1e9;
+    c.keys.forEach(function (k) {
+      var sy = SYSTEMS[k]; if (!sy) return;
+      if (family === 'mtm') { if (sy.mtm) { var d = Math.abs(lon - sy.tm.lon0); if (d < bd) { bd = d; best = k; } } return; }
+      if (!sy.utm && !(family === 'any' && sy.tm && sy.tm.k0 === 0.9996)) return;
+      var u = sy.utm || { z: Math.round((sy.tm.lon0 + 183) / 6), s: sy.tm.y0 > 0 };
+      var d2 = Math.abs(u.z - z) * 10 + (u.s !== south ? 5 : 0);
+      if (d2 < bd) { bd = d2; best = k; }
+    });
+    return best;
+  }
+  function inCountry(country, lat, lon) { var b = (COUNTRIES[country] || {}).box; return !b || (lat >= b[0] && lat <= b[1] && lon >= b[2] && lon <= b[3]); }
 
   function toGrid(key, lat, lon) {
     var s = SYSTEMS[key];
@@ -1107,7 +1257,7 @@ details.card[open] summary{margin-bottom:12px}
   }
   function suggestUTM(lon) { return lon < -78 ? 'utm17' : lon < -72 ? 'utm18' : 'utm19'; }
 
-  root.Geo = { SYSTEMS: SYSTEMS, toGrid: toGrid, toGeo: toGeo, parseAngle: parseAngle, fmtDMS: fmtDMS, suggestGK: suggestGK, suggestUTM: suggestUTM, makeTM: makeTM, GRS80: GRS80 };
+  root.Geo = { SYSTEMS: SYSTEMS, COUNTRIES: COUNTRIES, toGrid: toGrid, toGeo: toGeo, parseAngle: parseAngle, fmtDMS: fmtDMS, suggestGK: suggestGK, suggestUTM: suggestUTM, zoneKeyFor: zoneKeyFor, utmZone: utmZone, inCountry: inCountry, makeTM: makeTM, makeLCC: makeLCC, GRS80: GRS80, WGS84: WGS84 };
 })(typeof window !== 'undefined' ? window : globalThis);
 
 </script>
@@ -1127,7 +1277,7 @@ var $ = function(id){ return document.getElementById(id); };
 var KEY = 'construtop.campo.v1'; /* se conserva para no perder puntos ya guardados */
 
 /* ---------- estado ---------- */
-var state = { points: [], jobs: [{ id:'j0', name:'General', next:1 }], job: 'j0', set: { sys: 'ctm12', n: 10, acc: 15, geoid: 0, sep: ' ', dec: 3, theme: '', next: 1, fmt: 'pnezd_csv' } };
+var state = { points: [], jobs: [{ id:'j0', name:'General', next:1 }], job: 'j0', set: { country: 'co', autoZone: false, mode: 'n', t: 60, filt: 1, sys: 'ctm12', n: 20, acc: 15, geoid: 0, sep: ' ', dec: 3, theme: '', next: 1, fmt: 'pnezd_csv' } };
 try { var raw = localStorage.getItem(KEY); if (raw) { var o = JSON.parse(raw); if (o && o.points) state.points = o.points; if (o && o.jobs && o.jobs.length) { state.jobs = o.jobs; state.job = o.job || o.jobs[0].id; } if (o && o.set) Object.assign(state.set, o.set); } } catch(e){}
 state.points.forEach(function(p){ if (!p.job) p.job='j0'; });
 function curJob(){ for (var i=0;i<state.jobs.length;i++) if (state.jobs[i].id===state.job) return state.jobs[i]; state.job=state.jobs[0].id; return state.jobs[0]; }
@@ -1137,9 +1287,13 @@ function save(){ try { localStorage.setItem(KEY, JSON.stringify(state)); } catch
 function applyTheme(){ if (state.set.theme) document.documentElement.setAttribute('data-theme', state.set.theme); else document.documentElement.removeAttribute('data-theme'); }
 applyTheme();
 
-var gridKeys = Object.keys(S);
+if (!G.COUNTRIES[state.set.country]) state.set.country='co';
+if (!S[state.set.sys]) state.set.sys=G.COUNTRIES[state.set.country].def;
+function C(){ return G.COUNTRIES[state.set.country]; }
+function cKeys(){ var ks=C().keys.slice(); if (ks.indexOf(state.set.sys)<0 && S[state.set.sys]) ks.push(state.set.sys); return ks; }
+var gridKeys = cKeys();
 function fillSel(sel, keys, val){ sel.innerHTML = ''; keys.forEach(function(k){ var o=document.createElement('option'); o.value=k; o.textContent=S[k].name + (S[k].epsg ? '  ·  EPSG ' + S[k].epsg : ''); sel.appendChild(o); }); sel.value = val; }
-function shortOpts(sel, val){ sel.innerHTML=''; gridKeys.forEach(function(k){ var o=document.createElement('option'); o.value=k; o.textContent=S[k].short; sel.appendChild(o); }); sel.value=val; }
+function shortOpts(sel, val){ sel.innerHTML=''; cKeys().forEach(function(k){ var o=document.createElement('option'); o.value=k; o.textContent=S[k].short; sel.appendChild(o); }); sel.value=val; }
 
 function fx(v, d){ return (v==null||isNaN(v)) ? '—' : Number(v).toFixed(d==null?state.set.dec:d); }
 function fmtNum(v,d){ if (v==null||isNaN(v)) return '—'; var p=Number(v).toFixed(d==null?state.set.dec:d).split('.'); p[0]=p[0].replace(/\B(?=(\d{3})+(?!\d))/g,'.'); return p.join(','); }
@@ -1188,6 +1342,7 @@ function onFix(pos){
   var q=quality(c.accuracy);
   setStatus(q, '±' + c.accuracy.toFixed(c.accuracy<10?1:0) + ' m');
   $('capBtn').disabled = !!capture ? false : false;
+  if (state.set.autoZone) autoZone(last.lat, last.lon, false);
   renderGps();
   if (capture) capFeed(last);
   if (map) updateMe();
@@ -1195,10 +1350,12 @@ function onFix(pos){
 function renderGps(){
   var k=state.set.sys;
   if (!last){ ['vN','vE','vZ'].forEach(function(id){ $(id).textContent='—'; }); return; }
-  var g=G.toGrid(k,last.lat,last.lon), geo=S[k].geo;
-  $('vN').textContent = geo ? G.fmtDMS(last.lat,false) : fmtNum(g[1]);
-  $('vE').textContent = geo ? G.fmtDMS(last.lon,true) : fmtNum(g[0]);
-  $('vZ').textContent = last.h==null ? 'sin altura' : fmtNum(last.h - Number(state.set.geoid||0), 2) + ' m';
+  var cal=curJob().cal, la=last.lat+(cal?cal.dLat||0:0), lo=last.lon+(cal?cal.dLon||0:0);
+  var g=G.toGrid(k,la,lo), geo=S[k].geo;
+  $('vN').textContent = geo ? G.fmtDMS(la,false) : fmtNum(g[1]);
+  $('vE').textContent = geo ? G.fmtDMS(lo,true) : fmtNum(g[0]);
+  $('vZ').textContent = last.h==null ? 'sin altura' : fmtNum(last.h - Number(state.set.geoid||0) + (cal?cal.dZ||0:0), 2) + ' m';
+  $('calTag').hidden = !cal;
   $('vLat').textContent = 'Lat ' + last.lat.toFixed(7);
   $('vLon').textContent = 'Lon ' + last.lon.toFixed(7);
   $('vAcc').textContent = '±' + last.acc.toFixed(1) + ' m';
@@ -1208,36 +1365,132 @@ function renderGps(){
   $('vAltAcc').textContent = last.altAcc ? 'Z ±' + last.altAcc.toFixed(1) + ' m' : '';
 }
 $('gpsToggle').addEventListener('click', function(){ watchId==null ? gpsStart() : gpsStop(); });
-var gs=$('gpsSys'); shortOpts(gs, state.set.sys); gs.addEventListener('change', function(){ setSys(gs.value); });
+var gs=$('gpsSys'); shortOpts(gs, state.set.sys); gs.addEventListener('change', function(){ state.set.autoZone=false; setSys(gs.value); });
 
 /* captura con promedio ponderado */
+var WARMUP=3, actx=null;
+function beep(seq){
+  try{ if (!actx) return; seq.forEach(function(t){ var o=actx.createOscillator(), g=actx.createGain(); o.type='sine'; o.frequency.value=t[0]; o.connect(g); g.connect(actx.destination);
+    var st=actx.currentTime+t[1]; g.gain.setValueAtTime(0.0001,st); g.gain.exponentialRampToValueAtTime(0.35,st+0.02); g.gain.exponentialRampToValueAtTime(0.0001,st+t[2]); o.start(st); o.stop(st+t[2]+0.05); }); }catch(e){}
+}
+function fmtClock(sec){ sec=Math.max(0,Math.round(sec)); return Math.floor(sec/60)+':'+String(sec%60).padStart(2,'0'); }
+function capIdle(){
+  if (capture) return;
+  var t=state.set.mode==='t';
+  $('capTxt').textContent = t ? 'Capturar punto · '+fmtClock(state.set.t||60) : 'Capturar punto · '+(state.set.n||20)+' lect.';
+}
 function capStart(){
   if (!last){ toast('Primero enciende el GPS.'); return; }
-  capture={ fixes:[], need:Math.max(1, parseInt(state.set.n,10)||10), skipped:0 };
-  $('capTxt').textContent='Leyendo 0/' + capture.need + ' · tocar para cancelar'; $('capFill').style.width='0%'; $('capBtn').classList.add('rec');
+  var t=state.set.mode==='t';
+  capture={ fixes:[], need: t ? 0 : Math.max(3, parseInt(state.set.n,10)||20), dur: t ? (parseInt(state.set.t,10)||60) : 0, skipped:0, warm:WARMUP, t0:null, lastT:0 };
+  $('capTxt').textContent='Estabilizando… · toca para cancelar'; $('capFill').style.width='0%'; $('capBtn').classList.add('rec');
+  try{ if (!actx){ var AC=window.AudioContext||window.webkitAudioContext; if (AC) actx=new AC(); } if (actx && actx.state==='suspended') actx.resume(); }catch(e){}
+  $('lastCap').hidden=true; $('chrono').hidden=false; $('chrono').classList.remove('ok'); renderChips(); chronoUpdate();
+  if (t){ capture.timer=setInterval(capTick, 500); }
 }
-function capCancel(){ if (!capture) return; capture=null; $('capBtn').classList.remove('rec'); $('capTxt').textContent='Capturar punto'; $('capFill').style.width='0%'; }
+function capCancel(){ if (!capture) return; if (capture.timer) clearInterval(capture.timer); capture=null; $('capBtn').classList.remove('rec'); $('capFill').style.width='0%'; $('chrono').hidden=true; avgClear(); renderChips(); capIdle(); }
+function metric(lat0, lon0){ var tm=G.makeTM({ ell:G.GRS80, lat0:0, lon0:lon0, k0:1, x0:0, y0:0 }); return function(la,lo){ return tm.forward(la,lo); }; }
+function liveSd(fx_){
+  if (fx_.length<2) return null;
+  var P=metric(fx_[0].lat,fx_[0].lon), g=fx_.map(function(f){ return P(f.lat,f.lon); }), mE=0, mN=0;
+  g.forEach(function(v){ mE+=v[0]; mN+=v[1]; }); mE/=g.length; mN/=g.length;
+  var s2=0; g.forEach(function(v){ s2+=Math.pow(v[0]-mE,2)+Math.pow(v[1]-mN,2); });
+  return Math.sqrt(s2/(g.length-1));
+}
+function avgOf(fx_){
+  if (!fx_.length) return null;
+  var sw=0,la=0,lo=0,h=0,hw=0; fx_.forEach(function(f){ var w=1/(f.acc*f.acc); sw+=w; la+=f.lat*w; lo+=f.lon*w; if (f.h!=null){ h+=f.h*w; hw+=w; } });
+  return { lat:la/sw, lon:lo/sw, h: hw? h/hw : null };
+}
+var avgMarker=null;
+function avgClear(){ if (avgMarker && map){ map.removeLayer(avgMarker); } avgMarker=null; }
+function chronoUpdate(){
+  var c=capture; if (!c) return;
+  var n=c.fixes.length, cal=curJob().cal, k=outKey();
+  if (c.dur){ var el=c.t0?(Date.now()-c.t0)/1000:0; $('chClock').textContent=fmtClock(Math.max(0,c.dur-el)).padStart(5,'0'); }
+  else $('chClock').textContent=n+'/'+c.need;
+  $('chState').textContent = !c.t0 ? 'Estabilizando…' : (c.dur ? 'Ocupando · quieto' : 'Leyendo');
+  $('chSub').textContent = n+' lecturas'+(c.skipped?' · '+c.skipped+' rechazadas':'')+(c.dur?' · de '+fmtClock(c.dur):'');
+  var dLa=cal?cal.dLat||0:0, dLo=cal?cal.dLon||0:0, dZ=cal?cal.dZ||0:0;
+  if (last){ var gl=G.toGrid(k,last.lat+dLa,last.lon+dLo); $('cvLN').textContent=fx(gl[1]); $('cvLE').textContent=fx(gl[0]); }
+  var a=avgOf(c.fixes);
+  if (a){
+    var ga=G.toGrid(k,a.lat+dLa,a.lon+dLo); $('cvAN').textContent=fx(ga[1]); $('cvAE').textContent=fx(ga[0]);
+    if (last){ var gl2=G.toGrid(k,last.lat+dLa,last.lon+dLo); $('cvSep').textContent=Math.hypot(gl2[0]-ga[0],gl2[1]-ga[1]).toFixed(2)+' m'; }
+    $('cvZ').textContent = a.h==null ? '—' : fmtNum(a.h-Number(state.set.geoid||0)+dZ,2)+' m';
+    if (map){ var ll=[a.lat+dLa,a.lon+dLo];
+      if (!avgMarker){ avgMarker=L.circleMarker(ll,{ radius:8, color:'#fff', weight:2.5, fillColor:'#F2994A', fillOpacity:1 }).addTo(map); avgMarker.bindTooltip('Promedio',{ direction:'top', offset:[0,-8] }); }
+      else avgMarker.setLatLng(ll); }
+  } else { $('cvAN').textContent='—'; $('cvAE').textContent='—'; $('cvSep').textContent='—'; $('cvZ').textContent='—'; }
+  var sd=liveSd(c.fixes); $('cvSd').textContent = sd==null ? '—' : '±'+sd.toFixed(2)+' m';
+  $('chrono').classList.toggle('ok', sd!=null && sd<=2);
+}
+function capLabel(){
+  chronoUpdate();
+  var c=capture, n=c.fixes.length, sd=liveSd(c.fixes), sdt = sd==null ? '' : ' · disp ±'+sd.toFixed(1)+' m';
+  if (c.dur){
+    var el = c.t0 ? (Date.now()-c.t0)/1000 : 0;
+    $('capFill').style.width=Math.min(100, el/c.dur*100)+'%';
+    $('capTxt').textContent=fmtClock(el)+' / '+fmtClock(c.dur)+' · '+n+' lect.'+sdt;
+  } else {
+    $('capFill').style.width=(n/c.need*100)+'%';
+    $('capTxt').textContent='Leyendo '+n+'/'+c.need+sdt;
+  }
+}
+function capTick(){
+  if (!capture || !capture.dur) return;
+  chronoUpdate();
+  if (capture.t0){ capLabel(); if ((Date.now()-capture.t0)/1000 >= capture.dur && capture.fixes.length>=3) capFinish(); }
+}
 function capFeed(f){
-  if (f.acc > Number(state.set.acc||15)) { capture.skipped++; $('capTxt').textContent='Esperando precisión ≤ ' + state.set.acc + ' m (descartadas ' + capture.skipped + ')'; return; }
-  capture.fixes.push(f);
-  var n=capture.fixes.length; $('capFill').style.width=(n/capture.need*100)+'%';
-  $('capTxt').textContent='Leyendo ' + n + '/' + capture.need + ' · tocar para cancelar';
-  if (n>=capture.need) capFinish();
+  var c=capture;
+  if (f.t && f.t===c.lastT) return; c.lastT=f.t;
+  if (f.acc > Number(state.set.acc||15)) { c.skipped++; $('capTxt').textContent='Esperando precisión ≤ '+state.set.acc+' m (descartadas '+c.skipped+')'; return; }
+  if (c.warm>0){ c.warm--; $('capTxt').textContent='Estabilizando… '+(WARMUP-c.warm)+'/'+WARMUP; chronoUpdate(); return; }
+  if (!c.t0) c.t0=Date.now();
+  c.fixes.push(f); capLabel();
+  if (!c.dur && c.fixes.length>=c.need) capFinish();
+}
+function median(a){ var b=a.slice().sort(function(x,y){return x-y;}), m=b.length>>1; return b.length%2 ? b[m] : (b[m-1]+b[m])/2; }
+/* Filtro: descarta lecturas lejos de la mediana (2,5 × distancia mediana, mínimo 1,5 m) y cotas atípicas (3 × MAD, mínimo 2 m). */
+function robust(fx_){
+  var P=metric(fx_[0].lat,fx_[0].lon), g=fx_.map(function(f){ return P(f.lat,f.lon); });
+  var keep=fx_.map(function(){ return true; }), keepZ=fx_.map(function(f){ return f.h!=null; });
+  if (Number(state.set.filt)!==0 && fx_.length>=5){
+    var mE=median(g.map(function(v){return v[0];})), mN=median(g.map(function(v){return v[1];}));
+    var d=g.map(function(v){ return Math.hypot(v[0]-mE, v[1]-mN); }), lim=Math.max(2.5*median(d), 1.5);
+    keep=d.map(function(x){ return x<=lim; });
+    if (keep.filter(Boolean).length<3) keep=fx_.map(function(){ return true; });
+    var hs=fx_.filter(function(f){ return f.h!=null; }).map(function(f){ return f.h; });
+    if (hs.length>=5){ var mh=median(hs), mad=median(hs.map(function(h){ return Math.abs(h-mh); }))*1.4826, limz=Math.max(3*mad,2);
+      keepZ=fx_.map(function(f){ return f.h!=null && Math.abs(f.h-mh)<=limz; }); }
+  }
+  var sw=0, la=0, lo=0, hw=0, h=0, accs=0, nk=0, gk=[];
+  fx_.forEach(function(f,i){
+    if (keep[i]){ var w=1/(f.acc*f.acc); sw+=w; la+=f.lat*w; lo+=f.lon*w; accs+=f.acc; nk++; gk.push(g[i]); }
+    if (keepZ[i] && keep[i]){ var wz=1/(f.acc*f.acc); h+=f.h*wz; hw+=wz; }
+  });
+  if (!hw) fx_.forEach(function(f,i){ if (keepZ[i]){ var wz=1/(f.acc*f.acc); h+=f.h*wz; hw+=wz; } });
+  var lat=la/sw, lon=lo/sw, g0=P(lat,lon), sd=0;
+  gk.forEach(function(v){ sd+=Math.pow(v[0]-g0[0],2)+Math.pow(v[1]-g0[1],2); });
+  sd = gk.length>1 ? Math.sqrt(sd/(gk.length-1)) : 0;
+  return { lat:lat, lon:lon, h: hw ? h/hw : null, acc: accs/nk, sd: sd, n: nk, out: fx_.length-nk, keep: keep };
 }
 function capFinish(){
-  var fx_=capture.fixes, sw=0, la=0, lo=0, hw=0, h=0, accs=0;
-  fx_.forEach(function(f){ var w=1/(f.acc*f.acc); sw+=w; la+=f.lat*w; lo+=f.lon*w; accs+=f.acc; if (f.h!=null){ h+=f.h*w; hw+=w; } });
-  var lat=la/sw, lon=lo/sw, hh = hw ? h/hw : null;
-  var g0=G.toGrid('ctm12',lat,lon), sd=0;
-  fx_.forEach(function(f){ var g=G.toGrid('ctm12',f.lat,f.lon); sd+=Math.pow(g[0]-g0[0],2)+Math.pow(g[1]-g0[1],2); });
-  sd = fx_.length>1 ? Math.sqrt(sd/(fx_.length-1)) : 0;
-  var p={ id:Date.now().toString(36), p:$('capP').value.trim() || String(nextName()), d:$('capD').value.trim(), lat:lat, lon:lon,
-          z: hh==null ? null : hh - Number(state.set.geoid||0), gN: Number(state.set.geoid||0), acc: accs/fx_.length, sd: sd, n: fx_.length, t: Date.now(), src:'gps',
-          raw: fx_.map(function(f){ return [f.t, +f.lat.toFixed(9), +f.lon.toFixed(9), f.h==null?null:+f.h.toFixed(3), +f.acc.toFixed(2)]; }) };
+  var c=capture; if (c.timer) clearInterval(c.timer);
+  var fx_=c.fixes, r=robust(fx_), gN=Number(state.set.geoid||0);
+  var p={ id:Date.now().toString(36), p:$('capP').value.trim() || String(nextName()), d:$('capD').value.trim(), lat:r.lat, lon:r.lon,
+          z: r.h==null ? null : r.h - gN, gN: gN, acc: r.acc, sd: r.sd, n: r.n, nOut: r.out, occ: c.dur ? Math.round((Date.now()-c.t0)/1000) : null, t: Date.now(), src:'gps',
+          raw: fx_.map(function(f,i){ return [f.t, +f.lat.toFixed(9), +f.lon.toFixed(9), f.h==null?null:+f.h.toFixed(3), +f.acc.toFixed(2), r.keep[i]?1:0]; }) };
+  capture=null; $('capBtn').classList.remove('rec'); $('capFill').style.width='0%'; $('chrono').hidden=true; avgClear(); renderChips(); capIdle();
   addPoint(p);
-  capture=null; $('capBtn').classList.remove('rec'); $('capTxt').textContent='Capturar punto'; $('capFill').style.width='0%';
-  toast('Punto ' + p.p + ' guardado · ' + p.n + ' lecturas · dispersión ±' + sd.toFixed(2) + ' m');
-  if (navigator.vibrate) try{ navigator.vibrate(120); }catch(e){}
+  var k=outKey(), gp=G.toGrid(k,p.lat,p.lon), lc=$('lastCap');
+  lc.innerHTML='<b>Punto '+esc(p.p)+' guardado'+(p.d?' · '+esc(p.d):'')+'</b><span class="num">N '+fx(gp[1])+' · E '+fx(gp[0])+(p.z!=null?' · Z '+fmtNum(p.z,2):'')+'</span>'+
+    '<span class="hint">'+p.n+' lecturas'+(p.nOut?' ('+p.nOut+' descartadas)':'')+(p.occ?' · '+fmtClock(p.occ)+' de ocupación':'')+' · dispersión ±'+r.sd.toFixed(2)+' m'+(p.r0?' · calibrado':'')+'</span>';
+  lc.hidden=false;
+  beep([[880,0,0.18],[1320,0.22,0.3]]);
+  toast('Punto ' + p.p + ' guardado · ' + p.n + ' lecturas' + (p.nOut ? ' ('+p.nOut+' descartadas)' : '') + ' · disp ±' + r.sd.toFixed(2) + ' m' + (curJob().cal ? ' · calibrado' : ''));
+  if (navigator.vibrate) try{ navigator.vibrate([80,60,80]); }catch(e){}
 }
 $('capBtn').addEventListener('click', function(){ capture ? capCancel() : capStart(); });
 
@@ -1248,7 +1501,7 @@ function nextName(){
   return n;
 }
 function addPoint(p){
-  p.job=curJob().id; p.sel=true; state.points.push(p);
+  p.job=curJob().id; p.sel=true; state.points.push(p); if (p.src==='gps' && curJob().cal) calApplyOne(p, curJob().cal);
   var asNum=parseInt(p.p,10); if (String(asNum)===String(p.p)) curJob().next=asNum+1;
   curJob().next=nextName(); $('capP').value=curJob().next;
   save(); renderPoints(); if (map) drawPoints();
@@ -1256,24 +1509,36 @@ function addPoint(p){
 
 /* ---------- puntos ---------- */
 function grid(p){ return G.toGrid(state.set.sys, p.lat, p.lon); }
-function areaPer(){
-  var k=S[state.set.sys].geo ? 'ctm12' : state.set.sys;
-  var pts=selPts().map(function(p){ return G.toGrid(k,p.lat,p.lon); });
-  if (pts.length<2) return null;
-  var a=0, per=0;
-  for (var i=0;i<pts.length;i++){ var j=(i+1)%pts.length; if (pts.length>2||j>i) per+=Math.hypot(pts[j][0]-pts[i][0], pts[j][1]-pts[i][1]); a+=pts[i][0]*pts[j][1]-pts[j][0]*pts[i][1]; }
-  if (pts.length===2) per/=1;
-  return { a: Math.abs(a)/2, per: per, n: pts.length };
+/* Medidas reales sobre el terreno (elipsoide): plano Transverso de Mercator local, k=1, centrado en los puntos.
+   Evita el factor de escala de la cuadrícula (CTM12 k=0,9992). */
+function localPlane(lls){
+  var lo=0; lls.forEach(function(q){ lo+=q[1]; }); lo/=lls.length;
+  var tm=G.makeTM({ ell:G.GRS80, lat0:0, lon0:lo, k0:1, x0:0, y0:0 });
+  return function(q){ return tm.forward(q[0],q[1]); };
 }
+function measure(lls, closed){
+  if (lls.length<2) return null;
+  var f=localPlane(lls), xy=lls.map(f), segs=[], per=0, a=0, n=xy.length;
+  for (var i=0;i<n-1;i++){ var d=Math.hypot(xy[i+1][0]-xy[i][0], xy[i+1][1]-xy[i][1]); segs.push(d); per+=d; }
+  if (closed && n>=3){ var dc=Math.hypot(xy[0][0]-xy[n-1][0], xy[0][1]-xy[n-1][1]); segs.push(dc); per+=dc;
+    for (var j=0;j<n;j++){ var k2=(j+1)%n; a+=xy[j][0]*xy[k2][1]-xy[k2][0]*xy[j][1]; } }
+  return { a: Math.abs(a)/2, per: per, segs: segs, n: n };
+}
+function areaPer(){
+  var sp=selPts(); if (sp.length<2) return null;
+  return measure(sp.map(function(p){ return [p.lat,p.lon]; }), sp.length>=3);
+}
+function fmtArea(a){ return a>=10000 ? fmtNum(a/10000,4)+' ha' : fmtNum(a,2)+' m²'; }
+function fmtLen(d){ return d>=1000 ? fmtNum(d/1000,3)+' km' : fmtNum(d,2)+' m'; }
 function renderPoints(){
   var k=state.set.sys, geo=S[k].geo;
   $('ptsSys').textContent = S[k].short + (geo ? '' : ' · N, E en metros');
   var all=jobPts(), sel=selPts();
   $('sCount').textContent = sel.length + (sel.length!==all.length ? ' de '+all.length : '');
   $('selInfo').textContent = all.length ? (sel.length===all.length ? 'Todos marcados' : sel.length+' de '+all.length+' marcados') : 'Sin puntos';
-  renderJobs();
+  renderJobs(); renderCal();
   var ap=areaPer();
-  if (ap && ap.n>=3){ $('sArea').textContent = ap.a>=10000 ? fmtNum(ap.a/10000,4)+' ha' : fmtNum(ap.a,2)+' m²'; $('sPer').textContent = fmtNum(ap.per,2)+' m'; }
+  if (ap && ap.n>=3){ $('sArea').textContent = fmtArea(ap.a); $('sPer').textContent = fmtNum(ap.per,2)+' m'; }
   else { $('sArea').textContent='—'; $('sPer').textContent = ap ? fmtNum(ap.per,2)+' m' : '—'; }
   var L=$('plist'); L.innerHTML='';
   if (!all.length){ L.innerHTML='<div class="empty">Este trabajo aún no tiene puntos. Captúralos en GPS, márcalos en el mapa o agrégalos a mano.</div>'; return; }
@@ -1284,7 +1549,7 @@ function renderPoints(){
     var b=document.createElement('button'); b.className='body'; b.type='button';
     row.appendChild(ck); row.appendChild(b);
     var xy = geo ? (p.lat.toFixed(7)+', '+p.lon.toFixed(7)) : ('N '+fx(g[1])+'  E '+fx(g[0]));
-    var meta = (p.z==null?'Z —':'Z '+fx(p.z,2)) + (p.d?' · '+p.d:'') + (p.src==='gps' ? ' · ±'+p.acc.toFixed(1)+' m, '+p.n+' lect.' : '');
+    var meta = (p.z==null?'Z —':'Z '+fx(p.z,2)) + (p.d?' · '+p.d:'') + (p.src==='gps' ? ' · ±'+p.acc.toFixed(1)+' m, '+p.n+' lect.'+(p.r0?' · cal.':'') : '');
     b.innerHTML='<span class="id">'+esc(p.p)+'</span><span class="xy">'+esc(xy)+'</span><span class="tag '+(p.src==='gps'?'gps':'')+'">'+(p.src==='gps'?'GPS':p.src==='mapa'?'Mapa':'Manual')+'</span><span class="d">'+esc(meta)+'</span>';
     b.addEventListener('click', function(){ editPoint(p); });
     L.appendChild(row);
@@ -1304,7 +1569,11 @@ var FMT = {
   geojson:   { name:'GeoJSON · QGIS / ArcGIS', ext:'geojson', mime:'application/geo+json', hint:'Puntos en lat/long (WGS84) con todos los atributos.' },
   dxf:       { name:'DXF · AutoCAD / Civil 3D', ext:'dxf', mime:'application/dxf', hint:'Puntos 3D en la capa PUNTOS, número en NUMEROS y descripción en DESCRIPCION, en el sistema de salida.' }
 };
-function outKey(){ return S[state.set.sys].geo ? 'ctm12' : state.set.sys; }
+function outKey(){
+  if (!S[state.set.sys].geo) return state.set.sys;
+  if (state.set.country==='ww'){ var ref = last || jobPts()[0]; return ref ? G.zoneKeyFor('ww', ref.lat, ref.lon) : 'utm18n'; }
+  return C().def;
+}
 function txtSep(){ return state.set.sep==='\\t' ? '\t' : (state.set.sep||' '); }
 function cleanField(s, sep){ s=String(s==null?'':s).replace(/[\r\n]+/g,' '); return sep ? s.split(sep).join(' ') : s; }
 function xml(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]; }); }
@@ -1342,14 +1611,15 @@ function buildExport(fmt){
     return out.join('\r\n')+'\r\n';
   }
   if (fmt==='crudas'){
-    out.push(['Punto','Lectura','FechaHora','Latitud','Longitud','AlturaElipsoidal_m','PrecisionH_m','Norte','Este','Cota','Sistema','Descripcion'].join(','));
+    out.push(['Punto','Lectura','FechaHora','Latitud','Longitud','AlturaElipsoidal_m','PrecisionH_m','Norte','Este','Cota','Sistema','Usada','Descripcion'].join(','));
     var q2=function(s){ s=String(s==null?'':s); return /[",\r\n]/.test(s) ? '"'+s.replace(/"/g,'""')+'"' : s; };
     pts.forEach(function(p){
       if (!p.raw || !p.raw.length) return;
       var gN = p.gN!=null ? p.gN : Number(state.set.geoid||0);
-      p.raw.forEach(function(r,i){ var g=G.toGrid(kk,r[1],r[2]); out.push([q2(p.p), i+1, localTime(r[0]), r[1].toFixed(9), r[2].toFixed(9), r[3]==null?'':r[3].toFixed(3), r[4].toFixed(2), g[1].toFixed(d), g[0].toFixed(d), r[3]==null?'':(r[3]-gN).toFixed(3), q2(S[kk].short), q2(p.d)].join(',')); });
-      var g=G.toGrid(kk,p.lat,p.lon);
-      out.push([q2(p.p), 'PROMEDIO', p.t?localTime(p.t):'', p.lat.toFixed(9), p.lon.toFixed(9), p.z==null?'':(p.z+gN).toFixed(3), p.acc!=null?p.acc.toFixed(2):'', g[1].toFixed(d), g[0].toFixed(d), zOf(p,3), q2(S[kk].short), q2('disp '+(p.sd!=null?p.sd.toFixed(2):'-')+' m '+(p.d||''))].join(','));
+      p.raw.forEach(function(r,i){ var g=G.toGrid(kk,r[1],r[2]); out.push([q2(p.p), i+1, localTime(r[0]), r[1].toFixed(9), r[2].toFixed(9), r[3]==null?'':r[3].toFixed(3), r[4].toFixed(2), g[1].toFixed(d), g[0].toFixed(d), r[3]==null?'':(r[3]-gN).toFixed(3), q2(S[kk].short), r[5]===0?'NO':'SI', q2(p.d)].join(',')); });
+      var b=p.r0||p, g=G.toGrid(kk,b.lat,b.lon);
+      out.push([q2(p.p), 'PROMEDIO', p.t?localTime(p.t):'', b.lat.toFixed(9), b.lon.toFixed(9), b.z==null?'':(b.z+gN).toFixed(3), p.acc!=null?p.acc.toFixed(2):'', g[1].toFixed(d), g[0].toFixed(d), b.z==null?'':b.z.toFixed(3), q2(S[kk].short), '', q2('disp '+(p.sd!=null?p.sd.toFixed(2):'-')+' m '+(p.d||''))].join(','));
+      if (p.r0){ var gc=G.toGrid(kk,p.lat,p.lon); out.push([q2(p.p), 'CALIBRADO', '', p.lat.toFixed(9), p.lon.toFixed(9), '', '', gc[1].toFixed(d), gc[0].toFixed(d), zOf(p,3), q2(S[kk].short), '', q2('corregido con calibracion del trabajo')].join(',')); }
     });
     return out.length>1 ? out.join('\r\n')+'\r\n' : '';
   }
@@ -1396,7 +1666,7 @@ function buildExport(fmt){
 function fmtHint(){
   var f=FMT[state.set.fmt]||FMT.pnezd_csv, k=state.set.sys, txt=f.hint;
   if (S[k].geo && /^(penzd|pnezd|tabla)/.test(state.set.fmt)) txt+=' Sistema de salida en geográficas: N y E salen como latitud y longitud.';
-  if (S[k].geo && /^(rw5|crudas|dxf)$/.test(state.set.fmt)) txt+=' Como el sistema de salida está en geográficas, este formato sale en CTM12.';
+  if (S[k].geo && /^(rw5|crudas|dxf)$/.test(state.set.fmt)) txt+=' Como el sistema de salida está en geográficas, este formato sale en '+S[outKey()].short+'.';
   $('expHint').textContent=txt;
 }
 function stamp(){ var t=new Date(); return t.getFullYear()+String(t.getMonth()+1).padStart(2,'0')+String(t.getDate()).padStart(2,'0')+'_'+String(t.getHours()).padStart(2,'0')+String(t.getMinutes()).padStart(2,'0'); }
@@ -1462,7 +1732,7 @@ function pointForm(p, title, onOk, withDelete){
     '<div class="btns">'+(withDelete?'<button class="btn danger" id="fDel">Eliminar</button>':'')+'<button class="btn" id="fNo">Cancelar</button><button class="btn primary" id="fOk">Guardar</button></div>',
     function(el){
       el.querySelector('#fNo').onclick=closeSheet;
-      if (withDelete){ var del=el.querySelector('#fDel'); del.onclick=function(){ if (del.dataset.c){ state.points=state.points.filter(function(q){return q.id!==p.id;}); save(); closeSheet(); renderPoints(); if(map) drawPoints(); toast('Punto eliminado'); } else { del.dataset.c=1; del.textContent='Tocar otra vez para eliminar'; } }; }
+      if (withDelete){ var del=el.querySelector('#fDel'); del.onclick=function(){ if (del.dataset.c){ state.points=state.points.filter(function(q){return q.id!==p.id;}); save(); if (curJob().cal) calRecalc(curJob()); closeSheet(); renderPoints(); if(map) drawPoints(); toast('Punto eliminado'); } else { del.dataset.c=1; del.textContent='Tocar otra vez para eliminar'; } }; }
       el.querySelector('#fOk').onclick=function(){
         var A=el.querySelector('#fA').value, B=el.querySelector('#fB').value, lat, lon;
         if (geo){ lat=G.parseAngle(A,false); lon=G.parseAngle(B,true); }
@@ -1475,7 +1745,12 @@ function pointForm(p, title, onOk, withDelete){
     });
 }
 function editPoint(p){
-  pointForm(p, 'Punto ' + p.p, function(v){ Object.assign(p, v); save(); renderPoints(); if (map) drawPoints(); toast('Cambios guardados'); }, true);
+  pointForm(p, 'Punto ' + p.p, function(v){
+    var P=metric(p.lat,p.lon), g1=P(p.lat,p.lon), g2=P(v.lat,v.lon);
+    var moved = Math.hypot(g1[0]-g2[0], g1[1]-g2[1])>0.005 || ((p.z==null)!==(v.z==null)) || (p.z!=null && v.z!=null && Math.abs(p.z-v.z)>0.005);
+    p.p=v.p; p.d=v.d;
+    if (moved){ p.lat=v.lat; p.lon=v.lon; p.z=v.z; if (p.r0){ delete p.r0; } if (p.src==='gps'){ p.src='manual'; } }
+    save(); calRecalc(curJob()); renderPoints(); if (map) drawPoints(); toast('Cambios guardados'); }, true);
 }
 $('addManual').addEventListener('click', function(){
   pointForm({ p: String(nextName()) }, 'Nuevo punto', function(v){ addPoint(Object.assign({ id:Date.now().toString(36), t:Date.now(), src:'manual', acc:null, n:0 }, v)); toast('Punto ' + v.p + ' agregado'); }, false);
@@ -1488,10 +1763,49 @@ $('clearAll').addEventListener('click', function(){
 });
 
 /* ajustes */
+var cSel=$('setCountry'); Object.keys(G.COUNTRIES).forEach(function(k){ var o=document.createElement('option'); o.value=k; o.textContent=G.COUNTRIES[k].name; cSel.appendChild(o); }); cSel.value=state.set.country;
 fillSel($('setSys'), gridKeys, state.set.sys);
-$('setN').value=state.set.n; $('setAcc').value=state.set.acc; $('setGeoid').value=state.set.geoid; $('setSep').value=state.set.sep; $('setDec').value=String(state.set.dec); $('setTheme').value=state.set.theme;
-$('setSys').addEventListener('change', function(e){ setSys(e.target.value); });
-$('setN').addEventListener('change', function(e){ state.set.n=Math.max(1,Math.min(300,parseInt(e.target.value,10)||10)); e.target.value=state.set.n; save(); });
+function refillSystems(){
+  gridKeys=cKeys();
+  fillSel($('setSys'), gridKeys, state.set.sys); fillSel($('expSys'), gridKeys, state.set.sys); shortOpts($('gpsSys'), state.set.sys);
+  var cv=$('cvSys').value; fillSel($('cvSys'), cKeys().indexOf(cv)<0 ? ['wgs'].concat(cKeys().filter(function(k){return k!=='wgs';})) : cKeys(), cKeys().indexOf(cv)<0 ? 'wgs' : cv);
+  $('zoneBtn').hidden = !C().auto;
+}
+function autoZone(lat, lon, quiet){
+  if (!C().auto) return false;
+  var k=G.zoneKeyFor(state.set.country, lat, lon); if (!k) return false;
+  state.set.autoZone=false;
+  if (k!==state.set.sys){ setSys(k); if (!quiet) toast('Zona detectada: '+S[k].name); return true; }
+  if (!quiet) toast('Ya estás en '+S[k].name); return false;
+}
+cSel.addEventListener('change', function(){
+  state.set.country=cSel.value; state.set.sys=C().def; state.set.autoZone=!!C().auto; save();
+  refillSystems(); setSys(state.set.sys); convert();
+  if (last && state.set.autoZone) autoZone(last.lat, last.lon, false);
+  else toast(C().name.split(' · ')[0]+': '+S[state.set.sys].name);
+});
+$('zoneBtn').addEventListener('click', function(){
+  if (!last){ state.set.autoZone=true; save(); toast('Enciende el GPS: la zona se detecta con la primera lectura.'); return; }
+  autoZone(last.lat, last.lon, false);
+});
+$('setN').value=state.set.n; $('setMode').value=state.set.mode||'n'; $('setT').value=String(state.set.t||60); $('setFilt').value=String(state.set.filt==null?1:state.set.filt); modeUI(); $('setAcc').value=state.set.acc; $('setGeoid').value=state.set.geoid; $('setSep').value=state.set.sep; $('setDec').value=String(state.set.dec); $('setTheme').value=state.set.theme;
+$('setSys').addEventListener('change', function(e){ state.set.autoZone=false; setSys(e.target.value); });
+$('setN').addEventListener('change', function(e){ state.set.n=Math.max(3,Math.min(600,parseInt(e.target.value,10)||20)); e.target.value=state.set.n; save(); });
+function modeUI(){ var t=(state.set.mode==='t'); $('fN').hidden=t; $('fT').hidden=!t; capIdle(); renderChips(); }
+function renderChips(){
+  var cur = state.set.mode==='t' ? String(state.set.t||60) : 'n', any=false;
+  document.querySelectorAll('#capChips button').forEach(function(b){ var on=b.dataset.v===cur; if (on) any=true; b.setAttribute('aria-checked', on?'true':'false'); b.setAttribute('role','radio'); b.disabled=!!capture; });
+  if (!any && state.set.mode==='t'){ var lb=document.querySelector('#capChips button[data-v="60"]'); }
+}
+document.querySelectorAll('#capChips button').forEach(function(b){ b.addEventListener('click', function(){
+  if (capture) return;
+  var v=b.dataset.v;
+  if (v==='n'){ state.set.mode='n'; } else { state.set.mode='t'; state.set.t=parseInt(v,10); }
+  save(); $('setMode').value=state.set.mode; $('setT').value=String(state.set.t||60); modeUI();
+}); });
+$('setMode').addEventListener('change', function(e){ state.set.mode=e.target.value; save(); modeUI(); });
+$('setT').addEventListener('change', function(e){ state.set.t=parseInt(e.target.value,10)||60; save(); capIdle(); });
+$('setFilt').addEventListener('change', function(e){ state.set.filt=parseInt(e.target.value,10); save(); });
 $('setAcc').addEventListener('change', function(e){ state.set.acc=Math.max(1,parseFloat(e.target.value)||15); e.target.value=state.set.acc; save(); });
 $('setGeoid').addEventListener('change', function(e){ state.set.geoid=parseFloat(String(e.target.value).replace(',','.'))||0; save(); renderGps(); });
 $('setSep').addEventListener('change', function(e){ state.set.sep=e.target.value; save(); });
@@ -1509,20 +1823,27 @@ function convert(){
   var out=$('cvOut'); out.innerHTML='';
   if (lat==null||isNaN(lat)||isNaN(lon)){ cvLast=null; $('cvMsg').textContent = geo ? 'Acepta grados decimales (6.25411, −75.5689) o grados, minutos y segundos (6°15\'14.8" N).' : 'Escribe Norte y Este en metros.'; return; }
   cvLast={lat:lat,lon:lon};
-  var outside = lat<-5 || lat>14 || lon<-83 || lon>-66;
-  $('cvMsg').textContent = outside ? 'Ojo: este punto queda fuera de Colombia. Revisa el signo de la longitud (oeste es negativo).' : 'Resultado en todos los sistemas. La zona Gauss-Krüger que corresponde al punto está resaltada.';
-  var sug=G.suggestGK(lon), sugU=G.suggestUTM(lon);
-  gridKeys.forEach(function(kk){
+  var cc=state.set.country, outside = !G.inCountry(cc, lat, lon);
+  var hl={}; if (cc==='co'){ hl[G.suggestGK(lon)]=1; hl[G.suggestUTM(lon)]=1; hl.ctm12=1; }
+  else { var zu=G.zoneKeyFor(cc,lat,lon); if (zu) hl[zu]=1; if (cc==='ca'){ var zm=G.zoneKeyFor(cc,lat,lon,'mtm'); if (zm) hl[zm]=1; } if (cc==='mx') hl.mx_lcc=1; }
+  var wz=G.zoneKeyFor('ww',lat,lon); hl[wz]=1;
+  var list=cKeys();
+  if (list.length>12){ list=list.filter(function(kk){ return S[kk].geo || hl[kk] || kk===k || kk===state.set.sys; }); }
+  list=list.filter(function(kk){ var sy=S[kk]; if (sy.geo || hl[kk] || kk===k || kk===state.set.sys || !sy.tm) return true; return Math.abs(lon-sy.tm.lon0)<=6; });
+  if (list.indexOf(wz)<0) list.push(wz);
+  $('cvMsg').textContent = outside ? 'Ojo: este punto queda fuera de '+C().name.split(' · ')[0]+'. Revisa el signo de la longitud (oeste es negativo) o cambia el país en Puntos → Ajustes.' : (list.length<cKeys().length ? 'Resultado en los sistemas que corresponden al punto (zonas resaltadas).' : 'Resultado en todos los sistemas. Las zonas que corresponden al punto están resaltadas.');
+  list.forEach(function(kk){
     var s=S[kk], txt, cpy;
     if (s.geo){ txt=G.fmtDMS(lat,false)+'   '+G.fmtDMS(lon,true)+'\n'+lat.toFixed(8)+', '+lon.toFixed(8); cpy=lat.toFixed(8)+', '+lon.toFixed(8); }
     else { var g=G.toGrid(kk,lat,lon); txt='N '+fx(g[1])+'   E '+fx(g[0]); cpy=fx(g[1])+','+fx(g[0]); }
-    var d=document.createElement('div'); d.className='res'+((kk===sug||kk===sugU||kk==='ctm12')?' suggest':'');
+    var d=document.createElement('div'); d.className='res'+(hl[kk]?' suggest':'');
     d.innerHTML='<span class="n">'+esc(s.name)+(s.epsg?' <em>EPSG '+s.epsg+'</em>':'')+'</span><button class="btn cp" type="button">Copiar</button><span class="c" style="white-space:pre-wrap">'+esc(txt)+'</span>';
     d.querySelector('.cp').onclick=function(){ copyText(cpy); };
     out.appendChild(d);
   });
 }
 ['cvLat','cvLon','cvN','cvE'].forEach(function(id){ $(id).addEventListener('input', convert); });
+refillSystems();
 cvSys.addEventListener('change', function(){
   if (cvLast){ var k=cvSys.value; if (S[k].geo){ $('cvLat').value=cvLast.lat.toFixed(8); $('cvLon').value=cvLast.lon.toFixed(8); } else { var g=G.toGrid(k,cvLast.lat,cvLast.lon); $('cvN').value=g[1].toFixed(3); $('cvE').value=g[0].toFixed(3); } }
   convert();
@@ -1536,10 +1857,10 @@ $('cvSave').addEventListener('click', function(){
   pointForm({ p:String(nextName()), lat:cvLast.lat, lon:cvLast.lon }, 'Guardar punto', function(v){ addPoint(Object.assign({ id:Date.now().toString(36), t:Date.now(), src:'manual', acc:null, n:0 }, v)); toast('Punto ' + v.p + ' guardado'); }, false);
 });
 /* ejemplo inicial: Parque Berrío, Medellín (marcado como ejemplo) */
-$('cvLat').value='6°15\'02.5" N'; $('cvLon').value='75°34\'05.6" W'; var cvEx=true;
+var cvEx = state.set.country==='co'; if (cvEx){ $('cvLat').value='6°15\'02.5" N'; $('cvLon').value='75°34\'05.6" W'; }
 
 /* ---------- mapa ---------- */
-var map=null, layerPts=null, layerPoly=null, meMarker=null, meCircle=null, addMode=false, polyOn=false, tilesOk=false;
+var map=null, layerPts=null, layerPoly=null, layerLive=null, meMarker=null, meCircle=null, addMode=false, polyOn=false, tilesOk=false;
 function initMap(){
   if (map){ setTimeout(function(){ map.invalidateSize(); }, 60); return; }
   if (!window.L){ $('mapNote').hidden=false; $('mapNote').textContent='El mapa no está disponible en esta vista.'; return; }
@@ -1552,7 +1873,7 @@ function initMap(){
   L.control.scale({ imperial:false, position:'bottomright' }).addTo(map);
   sat.on('tileload', function(){ tilesOk=true; $('mapNote').hidden=true; });
   setTimeout(function(){ if (!tilesOk){ $('mapNote').hidden=false; $('mapNote').textContent='Sin conexión al mapa base. Los puntos sí se muestran.'; } }, 5000);
-  layerPts=L.layerGroup().addTo(map); layerPoly=L.layerGroup().addTo(map);
+  layerPts=L.layerGroup().addTo(map); layerPoly=L.layerGroup().addTo(map); layerLive=L.layerGroup().addTo(map);
   map.on('click', function(e){
     if (!addMode) return;
     pointForm({ p:String(nextName()), lat:e.latlng.lat, lon:e.latlng.lng }, 'Punto en mapa', function(v){ addPoint(Object.assign({ id:Date.now().toString(36), t:Date.now(), src:'mapa', acc:null, n:0 }, v)); toast('Punto ' + v.p + ' marcado'); }, false);
@@ -1573,8 +1894,42 @@ function drawPoints(){
   var sp=selPts();
   if (polyOn && sp.length>=2){
     var ll=sp.map(function(p){ return [p.lat,p.lon]; });
-    (sp.length>=3 ? L.polygon(ll,{ color:'#FFD23F', weight:2, fillOpacity:.15 }) : L.polyline(ll,{ color:'#FFD23F', weight:2 })).addTo(layerPoly);
+    (sp.length>=3 ? L.polygon(ll,{ color:'#FFD23F', weight:2.5, fillOpacity:.15 }) : L.polyline(ll,{ color:'#FFD23F', weight:2.5 })).addTo(layerPoly);
+    var m=measure(ll, sp.length>=3);
+    m.segs.forEach(function(d,i){
+      var a=ll[i], b=ll[(i+1)%ll.length];
+      segLabel([(a[0]+b[0])/2,(a[1]+b[1])/2], fmtNum(d,2)+' m', false).addTo(layerPoly);
+    });
   }
+  drawLive();
+}
+function segLabel(at, txt, live){
+  return L.marker(at, { interactive:false, keyboard:false, icon:L.divIcon({ className:'seg'+(live?' live':''), html:'<span>'+esc(txt)+'</span>', iconSize:[0,0] }) });
+}
+/* Panel de medidas y tramo en vivo hacia tu posición (lo que estás recorriendo) */
+function drawLive(){
+  if (!map) return;
+  layerLive.clearLayers();
+  var box=$('mapStats'), sp=selPts();
+  if (!polyOn){ box.hidden=true; return; }
+  var ll=sp.map(function(p){ return [p.lat,p.lon]; }), html='';
+  if (ll.length>=2){
+    var m=measure(ll, ll.length>=3);
+    html+='<div class="big">'+(ll.length>=3?'<span><small>Área</small> <b>'+fmtArea(m.a)+'</b></span>':'')+'<span><small>'+(ll.length>=3?'Perímetro':'Distancia')+'</small> <b>'+fmtLen(m.per)+'</b></span></div>';
+  } else html+='<div class="live">Marca o captura 2 puntos o más para ver medidas.</div>';
+  if (last && ll.length>=1){
+    var me=[last.lat,last.lon], lp=ll[ll.length-1], dLast=measure([lp,me],false).per;
+    L.polyline([lp,me],{ color:'#8EC5FF', weight:2, dashArray:'6 6' }).addTo(layerLive);
+    segLabel([(lp[0]+me[0])/2,(lp[1]+me[1])/2], fmtNum(dLast,1)+' m', true).addTo(layerLive);
+    var line='Tú → punto '+esc(sp[sp.length-1].p)+': '+fmtNum(dLast,1)+' m';
+    if (ll.length>=2){
+      var fp=ll[0]; L.polyline([me,fp],{ color:'#8EC5FF', weight:1.5, dashArray:'3 7', opacity:.8 }).addTo(layerLive);
+      var m2=measure(ll.concat([me]), true);
+      line+=' · si capturas aquí: '+fmtArea(m2.a);
+    }
+    html+='<div class="live">'+line+'</div>';
+  }
+  box.innerHTML=html; box.hidden=false;
 }
 function fitPts(){ var jp=jobPts(); if (!map||!jp.length) return; var b=L.latLngBounds(jp.map(function(p){ return [p.lat,p.lon]; })); map.fitBounds(b.pad(0.25), { maxZoom:19 }); }
 function updateMe(){
@@ -1582,20 +1937,123 @@ function updateMe(){
   var ll=[last.lat,last.lon];
   if (!meMarker){ meCircle=L.circle(ll,{ radius:last.acc, color:'#2F80ED', weight:1, fillOpacity:.12 }).addTo(map); meMarker=L.circleMarker(ll,{ radius:7, color:'#fff', weight:2.5, fillColor:'#2F80ED', fillOpacity:1 }).addTo(map); }
   else { meMarker.setLatLng(ll); meCircle.setLatLng(ll); meCircle.setRadius(last.acc); }
+  if (polyOn) drawLive();
 }
 $('mapAdd').addEventListener('click', function(){ addMode=!addMode; this.setAttribute('aria-pressed', addMode); $('mapNote').hidden=!addMode; if (addMode) $('mapNote').textContent='Toca el mapa donde va el punto'; if (map) map.getContainer().style.cursor=addMode?'crosshair':''; });
-$('mapPoly').addEventListener('click', function(){ polyOn=!polyOn; this.setAttribute('aria-pressed', polyOn); drawPoints(); });
+$('mapPoly').addEventListener('click', function(){ polyOn=!polyOn; this.setAttribute('aria-pressed', polyOn); drawPoints(); if (polyOn && selPts().length) fitPts(); });
 $('mapMe').addEventListener('click', function(){ if (!last){ toast('Enciende el GPS en la pestaña GPS.'); return; } map.setView([last.lat,last.lon], Math.max(map.getZoom(),18)); });
 $('mapFit').addEventListener('click', function(){ jobPts().length ? fitPts() : toast('No hay puntos todavía.'); });
 
 /* ---------- arranque ---------- */
+
+/* ---------- calibración de sitio (por trabajo) ----------
+   Cada punto de control: un punto GPS capturado + sus coordenadas conocidas.
+   Se promedia la diferencia (conocida − medida) y se aplica a todos los puntos GPS del trabajo. */
+function calApplyOne(p, cal){
+  if (!p.r0) p.r0={ lat:p.lat, lon:p.lon, z:p.z };
+  p.lat=p.r0.lat+(cal.dLat||0); p.lon=p.r0.lon+(cal.dLon||0);
+  p.z = p.r0.z==null ? null : p.r0.z+(cal.dZ||0);
+}
+function calRestore(p){ if (p.r0){ p.lat=p.r0.lat; p.lon=p.r0.lon; p.z=p.r0.z; delete p.r0; } }
+function calRecalc(job){
+  var pts=state.points.filter(function(p){ return p.job===job.id; });
+  if (!job.cal || !job.cal.ctl || !job.cal.ctl.length){ pts.forEach(calRestore); job.cal=null; save(); return; }
+  var byId={}; pts.forEach(function(p){ byId[p.id]=p; });
+  job.cal.ctl=job.cal.ctl.filter(function(c){ return byId[c.id] && byId[c.id].src==='gps'; });
+  var sLa=0,sLo=0,nP=0,sZ=0,nZ=0;
+  job.cal.ctl.forEach(function(c){
+    var p=byId[c.id], b=p.r0||p;
+    if (c.usePos){ var k=G.toGeo(c.sys, c.E, c.N); c.dLat=k[0]-b.lat; c.dLon=k[1]-b.lon; sLa+=c.dLat; sLo+=c.dLon; nP++; }
+    if (c.useZ && b.z!=null){ c.dZ=c.Z-b.z; sZ+=c.dZ; nZ++; }
+  });
+  if (!nP && !nZ){ pts.forEach(calRestore); job.cal=null; save(); return; }
+  job.cal.dLat = nP ? sLa/nP : 0; job.cal.dLon = nP ? sLo/nP : 0; job.cal.dZ = nZ ? sZ/nZ : 0; job.cal.nP=nP; job.cal.nZ=nZ;
+  pts.forEach(function(p){ if (p.src==='gps') calApplyOne(p, job.cal); else calRestore(p); });
+  save();
+}
+function renderCal(){
+  var job=curJob(), cal=job.cal, pill=$('calPill'), st=$('calSt'), res=$('calRes');
+  res.innerHTML='';
+  if (!cal){ pill.textContent='Sin calibrar'; pill.className='pill'; $('calDel').hidden=true; $('calAdd').textContent='Calibrar con BM / mojón';
+    st.textContent='Captura con GPS un BM o mojón de coordenadas conocidas y corrige todos los puntos GPS de este trabajo.'; return; }
+  pill.textContent='Calibrado'; pill.className='pill on'; $('calDel').hidden=false; $('calAdd').textContent='Agregar otro punto de control';
+  var probe=jobPts().filter(function(p){ return p.r0; })[0];
+  var dE=0,dN=0;
+  if (probe){ var P=metric(probe.r0.lat,probe.r0.lon), g1=P(probe.r0.lat,probe.r0.lon), g2=P(probe.r0.lat+cal.dLat,probe.r0.lon+cal.dLon); dE=g2[0]-g1[0]; dN=g2[1]-g1[1]; }
+  var sg=function(v){ return (v>=0?'+':'−')+Math.abs(v).toFixed(2); };
+  st.textContent = 'Corrección aplicada: ' + (cal.nP ? 'ΔN '+sg(dN)+' · ΔE '+sg(dE)+' m' : 'sin corrección horizontal') + (cal.nZ ? ' · ΔZ '+sg(cal.dZ)+' m' : '') + ' · ' + cal.ctl.length + ' punto(s) de control';
+  var byId={}; jobPts().forEach(function(p){ byId[p.id]=p; });
+  cal.ctl.forEach(function(c, i){
+    var p=byId[c.id]; if (!p) return;
+    var txt='—';
+    if (cal.ctl.length>1){
+      var parts=[];
+      if (c.usePos && cal.nP){ var k=G.toGrid(c.sys, p.lat, p.lon); parts.push('resid. H '+Math.hypot(k[0]-c.E, k[1]-c.N).toFixed(2)+' m'); }
+      if (c.useZ && cal.nZ && p.z!=null) parts.push('Z '+sg(p.z-c.Z));
+      txt=parts.join(' · ') || '—';
+    } else txt = (c.usePos?'posición':'') + (c.usePos&&c.useZ?' + ':'') + (c.useZ?'cota':'');
+    var rw=document.createElement('div'); rw.className='rw';
+    rw.innerHTML='<span>'+esc(p.p)+(p.d?' · '+esc(p.d):'')+'</span><span>'+esc(txt)+'</span>';
+    res.appendChild(rw);
+  });
+}
+$('calAdd').addEventListener('click', function(){
+  var gps=jobPts().filter(function(p){ return p.src==='gps'; });
+  if (!gps.length) return toast('Primero captura con GPS el BM o mojón en este trabajo.');
+  var k = outKey();
+  var opts=gps.slice().reverse().map(function(p){ return '<option value="'+esc(p.id)+'">'+esc(p.p)+(p.d?' · '+esc(p.d):'')+'</option>'; }).join('');
+  openSheet('<h2>Punto de control</h2><p class="hint">Escoge el punto que capturaste con GPS sobre el BM o mojón y escribe sus coordenadas conocidas en '+esc(S[k].name)+'.</p>'+
+    '<label class="field"><span class="label">Punto capturado</span><select id="cP">'+opts+'</select></label>'+
+    '<div class="chkrow"><label><input type="checkbox" id="cUP" checked> Corregir posición</label><label><input type="checkbox" id="cUZ" checked> Corregir cota</label></div>'+
+    '<div class="row"><label class="field"><span class="label">Norte conocido</span><input id="cN" inputmode="decimal"></label><label class="field"><span class="label">Este conocido</span><input id="cE" inputmode="decimal"></label></div>'+
+    '<label class="field"><span class="label">Cota conocida (m)</span><input id="cZ" inputmode="decimal"></label>'+
+    '<p class="hint" id="cMsg"></p>'+
+    '<div class="btns"><button class="btn" id="cNo">Cancelar</button><button class="btn primary" id="cOk">Calibrar</button></div>',
+    function(el){
+      var num=function(id){ var v=el.querySelector(id).value.trim().replace(/\s/g,'').replace(',','.'); return v===''?NaN:parseFloat(v); };
+      var sync=function(){ el.querySelector('#cN').disabled=el.querySelector('#cE').disabled=!el.querySelector('#cUP').checked; el.querySelector('#cZ').disabled=!el.querySelector('#cUZ').checked; preview(); };
+      var preview=function(){
+        var p=gps.filter(function(q){ return q.id===el.querySelector('#cP').value; })[0]; if (!p) return;
+        var b=p.r0||p, g=G.toGrid(k,b.lat,b.lon), N=num('#cN'), E=num('#cE'), Z=num('#cZ'), m=[];
+        m.push('Medido: N '+g[1].toFixed(3)+' · E '+g[0].toFixed(3)+(b.z!=null?' · Z '+b.z.toFixed(2):''));
+        if (el.querySelector('#cUP').checked && !isNaN(N) && !isNaN(E)){ var dd=Math.hypot(E-g[0],N-g[1]); m.push('Diferencia horizontal: '+dd.toFixed(2)+' m'+(dd>30?' — revisa: es mucha para un celular':'')); }
+        if (el.querySelector('#cUZ').checked && !isNaN(Z) && b.z!=null) m.push('Diferencia de cota: '+(Z-b.z).toFixed(2)+' m');
+        el.querySelector('#cMsg').textContent=m.join('\n'); el.querySelector('#cMsg').style.whiteSpace='pre-line';
+      };
+      ['#cUP','#cUZ'].forEach(function(id){ el.querySelector(id).addEventListener('change', sync); });
+      ['#cN','#cE','#cZ','#cP'].forEach(function(id){ el.querySelector(id).addEventListener('input', preview); el.querySelector(id).addEventListener('change', preview); });
+      sync();
+      el.querySelector('#cNo').onclick=closeSheet;
+      el.querySelector('#cOk').onclick=function(){
+        var up=el.querySelector('#cUP').checked, uz=el.querySelector('#cUZ').checked, N=num('#cN'), E=num('#cE'), Z=num('#cZ'), id=el.querySelector('#cP').value;
+        var p=gps.filter(function(q){ return q.id===id; })[0];
+        if (!up && !uz) return el.querySelector('#cMsg').textContent='Marca al menos posición o cota.';
+        if (up && (isNaN(N)||isNaN(E))) return el.querySelector('#cMsg').textContent='Escribe el Norte y el Este conocidos.';
+        if (uz && isNaN(Z)) return el.querySelector('#cMsg').textContent='Escribe la cota conocida.';
+        if (uz && p.r0==null && p.z==null) return el.querySelector('#cMsg').textContent='Ese punto no tiene altura GPS; desmarca "Corregir cota".';
+        if (up){ var chk=G.toGeo(k,E,N); if (!isFinite(chk[0]) || !isFinite(chk[1]) || Math.abs(chk[0])>85 || !G.inCountry(state.set.country, chk[0], chk[1])) return el.querySelector('#cMsg').textContent='Esas coordenadas no caen en '+C().name.split(' · ')[0]+' en '+S[k].short+'. Revisa N, E y el sistema de salida.'; }
+        var job=curJob(); job.cal=job.cal||{ ctl:[] };
+        job.cal.ctl=job.cal.ctl.filter(function(c){ return c.id!==id; });
+        job.cal.ctl.push({ id:id, sys:k, N:N, E:E, Z:Z, usePos:up, useZ:uz });
+        calRecalc(job); closeSheet(); renderPoints(); renderGps(); if (map) drawPoints();
+        toast('Trabajo calibrado con el punto '+p.p);
+      };
+    });
+});
+$('calDel').addEventListener('click', function(){
+  var b=$('calDel');
+  if (!b.dataset.c){ b.dataset.c=1; b.textContent='Tocar otra vez para quitar'; setTimeout(function(){ delete b.dataset.c; b.textContent='Quitar calibración'; }, 4000); return; }
+  delete b.dataset.c; b.textContent='Quitar calibración';
+  var job=curJob(); job.cal=null; calRecalc(job); renderPoints(); renderGps(); if (map) drawPoints(); toast('Calibración quitada. Los puntos vuelven a la medida original.');
+});
+
 /* ---------- trabajos ---------- */
 function renderJobs(){
   var js=$('jobSel'); js.innerHTML='';
   state.jobs.forEach(function(j){ var n=state.points.filter(function(p){ return p.job===j.id; }).length; var o=document.createElement('option'); o.value=j.id; o.textContent=j.name+' ('+n+')'; js.appendChild(o); });
   js.value=curJob().id; $('gpsJob').textContent=curJob().name;
 }
-function switchJob(id){ state.job=id; save(); $('capP').value=nextName(); renderPoints(); if (map){ drawPoints(); fitPts(); } }
+function switchJob(id){ state.job=id; save(); renderGps(); $('capP').value=nextName(); renderPoints(); if (map){ drawPoints(); fitPts(); } }
 $('jobSel').addEventListener('change', function(e){ switchJob(e.target.value); });
 function jobForm(job){
   var isNew=!job, others=state.jobs.length>1;
@@ -1626,8 +2084,8 @@ $('jobEdit').addEventListener('click', function(){ jobForm(curJob()); });
 function setAll(v){ jobPts().forEach(function(p){ p.sel=v; }); save(); renderPoints(); if (map) drawPoints(); }
 $('selAll').addEventListener('click', function(){ setAll(true); });
 $('selNone').addEventListener('click', function(){ setAll(false); });
-$('capP').value=nextName(); renderJobs();
-renderPoints(); convert(); if (typeof cvEx!=='undefined') $('cvMsg').textContent='Ejemplo cargado: Parque Berrío, Medellín. Escribe tus coordenadas encima.';
+$('capP').value=nextName(); renderJobs(); capIdle(); renderChips();
+renderPoints(); convert(); if (typeof cvEx!=='undefined' && cvEx) $('cvMsg').textContent='Ejemplo cargado: Parque Berrío, Medellín. Escribe tus coordenadas encima.';
 if (!window.isSecureContext) $('accTxt').textContent='El GPS solo funciona si la app se abre desde una dirección https.';
 document.addEventListener('visibilitychange', function(){ if (document.visibilityState==='visible' && watchId!=null && navigator.wakeLock) navigator.wakeLock.request('screen').then(function(w){ wake=w; }).catch(function(){}); });
 if ('serviceWorker' in navigator && location.protocol==='https:' && !/claude\.(ai|site)|claudeusercontent/.test(location.host)) {
